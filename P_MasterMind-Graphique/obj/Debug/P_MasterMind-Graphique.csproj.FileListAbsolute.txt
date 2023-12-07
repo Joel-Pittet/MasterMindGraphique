@@ -22,3 +22,15 @@ D:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_Ma
 D:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.CoreCompileInputs.cache
 D:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.exe
 D:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.pdb
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\bin\Debug\P_MasterMind-Graphique.exe.config
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\bin\Debug\P_MasterMind-Graphique.exe
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\bin\Debug\P_MasterMind-Graphique.pdb
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.AssemblyReference.cache
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.SuggestedBindingRedirects.cache
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind_Graphique.Game.resources
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind_Graphique.Menu.resources
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind_Graphique.Properties.Resources.resources
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.GenerateResource.cache
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.CoreCompileInputs.cache
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.exe
+F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.pdb

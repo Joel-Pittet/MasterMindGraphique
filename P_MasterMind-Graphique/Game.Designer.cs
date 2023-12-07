@@ -33,6 +33,7 @@
             this.lblPossibleColors = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnCheck = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTries
@@ -57,9 +58,10 @@
             // lblPossibleColors
             // 
             this.lblPossibleColors.AutoSize = true;
-            this.lblPossibleColors.Location = new System.Drawing.Point(270, 9);
+            this.lblPossibleColors.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPossibleColors.Location = new System.Drawing.Point(58, 294);
             this.lblPossibleColors.Name = "lblPossibleColors";
-            this.lblPossibleColors.Size = new System.Drawing.Size(103, 13);
+            this.lblPossibleColors.Size = new System.Drawing.Size(133, 16);
             this.lblPossibleColors.TabIndex = 0;
             this.lblPossibleColors.Text = "Couleurs disponibles";
             // 
@@ -82,11 +84,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnExitGame_Click);
             // 
+            // btnCheck
+            // 
+            this.btnCheck.Location = new System.Drawing.Point(273, 274);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(99, 36);
+            this.btnCheck.TabIndex = 3;
+            this.btnCheck.Text = "Valider";
+            this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 640);
+            this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblPossibleColors);
@@ -107,5 +120,6 @@
         private System.Windows.Forms.Label lblPossibleColors;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCheck;
     }
 }
