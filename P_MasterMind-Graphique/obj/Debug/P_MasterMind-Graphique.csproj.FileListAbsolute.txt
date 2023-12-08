@@ -34,3 +34,15 @@ F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_Ma
 F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.CoreCompileInputs.cache
 F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.exe
 F:\FPA 2023-2025\1ère année\Curchod\P_Prog-Curchod\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.pdb
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\bin\Debug\P_MasterMind-Graphique.exe.config
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\bin\Debug\P_MasterMind-Graphique.exe
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\bin\Debug\P_MasterMind-Graphique.pdb
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.AssemblyReference.cache
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.SuggestedBindingRedirects.cache
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind_Graphique.Game.resources
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind_Graphique.Menu.resources
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind_Graphique.Properties.Resources.resources
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.GenerateResource.cache
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.csproj.CoreCompileInputs.cache
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.exe
+C:\Users\ph06ilj\Desktop\P_MasterMind-Graphique\P_MasterMind-Graphique\obj\Debug\P_MasterMind-Graphique.pdb

@@ -24,6 +24,9 @@ namespace P_MasterMind_Graphique
         //Liste pour stocker le code secret
         List<Color> secretCode = new List<Color>();
 
+        //Copie de la liste du code
+        List<Color> copySecretCode = new List<Color>();
+
         //maximum de couleurs dans le code secret et dans les essais
         const int NB_COLORS = 4;
 
@@ -142,6 +145,9 @@ namespace P_MasterMind_Graphique
 
                 //Ajoute les couleurs à la liste du code secret
                 secretCode.Add(ColorList[RandomColor]);
+
+                //Ajoute les couleurs dans la copie de la liste du code secret
+                copySecretCode.Add(ColorList[RandomColor]);
 
                 //Affichage du code via des labels de couleurs
                 Label lblCode = new Label();
@@ -399,34 +405,52 @@ namespace P_MasterMind_Graphique
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
+
+            //Réinitialise le compteur de bonne couleurs au bon endroit
+            GoodColorPlace = 0;
+
             //Parcour le tableau et compare les essais du joueur et le code secret
-            for (int i = 0; i < countRow + 1; i++)
+            for(int j = 0; j < NB_COLORS; j++)
             {
-                for(int j = 0; j < NB_COLORS; j++)
+                //Compte le nombre de couleur juste au bon endroit, en comparant le code et l'essai de l'utilisateur
+                if (gridLabels[j, countRow].BackColor == secretCode[j])
                 {
-                    //Compte le nombre de couleur juste au bon endroit, en comparant le code et l'essai de l'utilisateur
-                    if (gridLabels[j, i].BackColor == secretCode[j])
+
+                    //Affiche la couleur verte dans la case dont le joueur à trouvé la couleur
+                    gridResultLabels[j, countRow].BackColor = Color.Green;
+                    GoodColorPlace++;
+
+                    //change la couleur de la copie de la liste
+                    copySecretCode[j] = Color.DarkViolet;
+
+
+
+                    //envoie un message de victoire si les 4 couleurs sont trouvées
+                    if (GoodColorPlace == 4)
                     {
-                        //Affiche la couleur verte dans la case dont le joueur à trouvé la couleur
-                        gridResultLabels[j, i].BackColor = Color.Green;
-
+                        //Affiche une fenêtre avec un message de victoire
+                        MessageBox.Show("Bravo tu as trouvé le code secret");
                     }
-                }
 
+                }
             }
 
-
-            /*for (int i = 0; i < NB_COLORS; i++)
+                       Console.WriteLine($"{secretCode[0].ToString()}, {secretCode[1].ToString()}, {secretCode[2].ToString()}, { secretCode[3].ToString()}");
+            //parcours le tableau
+            for (int i = 0; i < NB_COLORS; i++)
             {
-                for (int j = 0; j < NB_COLORS; j++)
+                for(int j = 0;j < NB_COLORS; j++)
                 {
-                    if (gridResultLabels[countRow,j].BackColor == secretCode[i])
+                    //si la couleur existe dans la copie du code
+                    if (gridLabels[j, countRow].BackColor == copySecretCode[i] && i != j)
                     {
-                        gridResultLabels[countRow, j].BackColor = Color.Brown;
+                        //change la couleurs dans le code secret
+                        gridResultLabels[j, countRow].BackColor = Color.Turquoise;
+
                     }
                 }
-
-            }*/
+            }
+             //ATTention réinitialisation car la boucle des doublons se fait juste au 1er essai mais pas au reste
 
             countRow++;
         }
