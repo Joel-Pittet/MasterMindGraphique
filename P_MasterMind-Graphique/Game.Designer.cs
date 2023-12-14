@@ -31,7 +31,7 @@
             this.lblTries = new System.Windows.Forms.Label();
             this.lblresultUserTry = new System.Windows.Forms.Label();
             this.lblPossibleColors = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -65,14 +65,15 @@
             this.lblPossibleColors.TabIndex = 0;
             this.lblPossibleColors.Text = "Couleurs disponibles";
             // 
-            // button1
+            // btnDelete
             // 
-            this.button1.Location = new System.Drawing.Point(273, 126);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 36);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Effacer";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(273, 126);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(99, 36);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Effacer";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // button2
             // 
@@ -101,7 +102,7 @@
             this.ClientSize = new System.Drawing.Size(399, 640);
             this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblPossibleColors);
             this.Controls.Add(this.lblresultUserTry);
             this.Controls.Add(this.lblTries);
@@ -118,7 +119,7 @@
         private System.Windows.Forms.Label lblTries;
         private System.Windows.Forms.Label lblresultUserTry;
         private System.Windows.Forms.Label lblPossibleColors;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCheck;
     }
