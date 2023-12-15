@@ -17,6 +17,11 @@ namespace P_MasterMind_Graphique
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Lance la form principale du jeu et ferme celle du menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPlay_Click(object sender, EventArgs e)
         {
             Game form2 = new Game();

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -87,6 +88,18 @@ namespace P_MasterMind_Graphique
         //pour compter le nombre de couleurs juste au bon endroit
         int GoodColorPlace = 0;
 
+        //crée une form de victoire
+        Form victoryDefeatForm = new Form();
+
+        //Création du bouton pour quitter sur la form de victoire/Défaite
+        Button btnQuit = new Button();
+
+        //Création du bouton retour pour rejouer
+        Button btnReplay = new Button();
+
+        //Crée un label pour le message de victoire
+        Label victoryDefeatLabel = new Label();
+
         /// <summary>
         /// Lance la form en initialisant les panels d'essais et de couleurs
         /// </summary>
@@ -94,14 +107,14 @@ namespace P_MasterMind_Graphique
         /// <param name="e"></param>
         private void Game_Load(object sender, EventArgs e)
         {
-
-            int x = 100;
-            int y = 500;
+            //Place les labels de solution
+            /*int x = 100;
+            int y = 500;*/
 
             //création du code secret en utilisant la liste des couleurs
             for (int i = 0; i < NB_COLORS; i++)
             {
-
+                //choisi une couleur aléatoirement dans la liste de couleur
                 int RandomColor = RandomCode.Next(ColorList.Count);
 
                 //Ajoute les couleurs à la liste du code secret
@@ -115,8 +128,8 @@ namespace P_MasterMind_Graphique
 
 
 
-
-                lblCode.Location = new Point(x, y);
+                //Affichage code secret --> solution
+                /*lblCode.Location = new Point(x, y);
 
                 x = x + 40;
 
@@ -129,7 +142,8 @@ namespace P_MasterMind_Graphique
                 //Change la taille du label
                 lblCode.Size = new Size(LBL_SIZE, LBL_SIZE);
 
-                Controls.Add(lblCode);
+                //association du label à la form
+                Controls.Add(lblCode);*/
             }
 
 
@@ -260,7 +274,7 @@ namespace P_MasterMind_Graphique
                 }
             }
 
-            /********************************************Affichage des labels de résultats****************************************/
+            /********************************Affichage des labels de résultats**********************************/
 
             //Affiche les labels en colonne
             for (int i = 0; i < MAX_TRIES; i++)
@@ -281,11 +295,11 @@ namespace P_MasterMind_Graphique
                     //Ajoute le label au tableau
                     gridResultLabels[j, i] = resultLabels;
 
-                    //donne la couleur de fond blanche au label
-                    resultLabels.BackColor = Color.White;
+                    //donne la couleur de fond grises au label
+                    resultLabels.BackColor = Color.PowderBlue;
 
                     //Donne une bordure au label
-                    resultLabels.BorderStyle = BorderStyle.FixedSingle;
+                    resultLabels.BorderStyle = BorderStyle.Fixed3D;
 
                     //Ajoute 1 au compteur des labels pour le nom du label
                     lblResultCount++;
@@ -429,6 +443,9 @@ namespace P_MasterMind_Graphique
         private void btnCheck_Click(object sender, EventArgs e)
         {
 
+            //Remet à 0 l'index pour mettre la couleur dans le bon label
+            toColorLabel = 0;
+
             //ré - active chaque boutons de couleurs
             foreach (Button btn in btnColor)
             {
@@ -452,8 +469,8 @@ namespace P_MasterMind_Graphique
                 if (gridLabels[j, countRow].BackColor == secretCode[j])
                 {
 
-                    //Affiche la couleur verte dans la case dont le joueur à trouvé la couleur
-                    gridResultLabels[j, countRow].BackColor = Color.Green;
+                    //Affiche la couleur blanche dans la case dont le joueur à trouvé la couleur
+                    gridResultLabels[j, countRow].BackColor = Color.White;
                     GoodColorPlace++;
 
                     //change la couleur de la copie de la liste
@@ -467,41 +484,41 @@ namespace P_MasterMind_Graphique
                         //cache cette form
                         this.Hide();
 
-                        //crée une form de victoire
-                        Form victoryForm = new Form();
-
                         //Change le nom de la form
-                        victoryForm.Name = "FrmVictory";
+                        victoryDefeatForm.Name = "FrmVictory";
 
                         //initialise la taille de la form
-                        victoryForm.Size = new Size(700,400);
+                        victoryDefeatForm.Size = new Size(700,400);
 
                         //Change la couleur du fond de la form
-                        victoryForm.BackColor = Color.BurlyWood;
-
-                        //Crée un label pour le message de victoire
-                        Label victoryLabel = new Label();
+                        victoryDefeatForm.BackColor = Color.BurlyWood;
 
                         //Change le nom du label
-                        victoryLabel.Name = "lblVictory";
+                        victoryDefeatLabel.Name = "lblVictory";
 
                         //Défini la taille du label
-                        victoryLabel.Size = new Size(500, 100);
+                        victoryDefeatLabel.Size = new Size(500, 100);
 
                         //Place le label dans la form
-                        victoryLabel.Location = new Point(110, 100);
+                        victoryDefeatLabel.Location = new Point(110, 100);
 
                         //Change la police du message et l'attribue a la form
-                        victoryForm.Font = new Font("Stencil", 18, FontStyle.Regular);
+                        victoryDefeatForm.Font = new Font("Stencil", 18, FontStyle.Regular);
 
                         //Affiche un message de victoire dans le texte du label
-                        victoryLabel.Text = "Bravo tu as trouvé le code secret";
+                        victoryDefeatLabel.Text = "Bravo !! ;) Tu as trouvé le code secret !!";
 
-                        //Création du bouton retour pour rejouer
-                        Button btnReplay = new Button();
+                        //Change la police du bouton Rejouer
+                        btnReplay.Font = new Font("Tw Cen MT Condensed", 18, FontStyle.Bold);
+
+                        //Change la couleur de fond du bouton Rejouer
+                        btnReplay.BackColor = Color.Red;
 
                         //Change le nom du bouton pour rejouer
                         btnReplay.Name = "btnReplay";
+
+                        //Change le texte du bouton
+                        btnReplay.Text = "Rejouer";
 
                         //Change la taille du bouton
                         btnReplay.Size = new Size(138,55);
@@ -510,28 +527,37 @@ namespace P_MasterMind_Graphique
                         btnReplay.Location = new Point(110, 250);
 
                         //Associe le bouton à la form
-                        victoryForm.Controls.Add(btnReplay);
+                        victoryDefeatForm.Controls.Add(btnReplay);                       
 
-                        //Création du bouton pour quitte sur la form de victoire
-                        Button btnQuit = new Button();
+                        //Change la police du bouton Rejouer
+                        btnQuit.Font = new Font("Tw Cen MT Condensed", 18, FontStyle.Bold);
+
+                        //Change la couleur de fond du bouton Rejouer
+                        btnQuit.BackColor = Color.Lime;
 
                         //Change le nom du bouton pour quitter
                         btnQuit.Name = "btnQuit";
+
+                        //Change le texte du bouton
+                        btnQuit.Text = "Quitter";
 
                         //Change la taille du bouton
                         btnQuit.Size = new Size(138, 55);
 
                         //Place le bouton
-                        btnQuit.Location = new Point(350, 250);
+                        btnQuit.Location = new Point(400, 250);
+
+                        //Associe la méthode pour quitter l'application au nouveau bouton quitter
+                        btnQuit.Click += new EventHandler(btnExitGame_Click);
 
                         //Associe le bouton à la form
-                        victoryForm.Controls.Add(btnQuit);
+                        victoryDefeatForm.Controls.Add(btnQuit);
 
                         //Associe le label à la form
-                        victoryForm.Controls.Add(victoryLabel);
+                        victoryDefeatForm.Controls.Add(victoryDefeatLabel);
 
                         //Affiche la form
-                        victoryForm.Show();
+                        victoryDefeatForm.Show();
 
 
                     }
@@ -549,13 +575,28 @@ namespace P_MasterMind_Graphique
                     if (gridLabels[i, countRow].BackColor == copySecretCode[j] && i != j && gridResultLabels[i, countRow].BackColor != Color.Green)
                     {
                         //change la couleurs des labels de résultats
-                        gridResultLabels[i, countRow].BackColor = Color.Turquoise;
+                        gridResultLabels[i, countRow].BackColor = Color.Black;
                         break;
                     }
                 }
             }
 
+            //Ajoute 1 pour passer à la ligne suivante et compter les essais
             countRow++;
+
+            //Si le joueur à atteint le nombre max d'essai
+            if (countRow == MAX_TRIES)
+            {
+                //Affiche un message de défaite
+                this.Hide();
+
+                //Affiche la form pour le message de défaite
+                victoryDefeatForm.Show();
+                
+                //Change de le text en message de défaite
+               victoryDefeatLabel.Text = "Tu as perdu, tu feras mieux la prochaine fois";
+
+            }
         }
 
         /// <summary>
@@ -575,6 +616,6 @@ namespace P_MasterMind_Graphique
                 toColorLabel = 0;
             }
         }
-            
+
     }
 }
