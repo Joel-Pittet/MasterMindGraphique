@@ -43,6 +43,9 @@ namespace P_MasterMind_Graphique
         //tableau pour stocker les labels (essais du joueur)
         Label[,] gridLabels = new Label[NB_COLORS, MAX_TRIES];
 
+        //copie le tableau qui stock les labels (essais du joueur) pour faciliter la comparaison (doublons)
+        Label[,] copyGridLabels = new Label[NB_COLORS, MAX_TRIES];
+
         //tableau pour stocker les labels (resultats des essais du joueur)
         Label[,] gridResultLabels = new Label[NB_COLORS, MAX_TRIES];
 
@@ -100,6 +103,9 @@ namespace P_MasterMind_Graphique
         //Crée un label pour le message de victoire
         Label victoryDefeatLabel = new Label();
 
+        //pour remplir les cases de résutlat de gauche à droite
+        int cptrResult = 0;
+
         /// <summary>
         /// Lance la form en initialisant les panels d'essais et de couleurs
         /// </summary>
@@ -108,8 +114,8 @@ namespace P_MasterMind_Graphique
         private void Game_Load(object sender, EventArgs e)
         {
             //Place les labels de solution
-            /*int x = 100;
-            int y = 500;*/
+            int x = 100;
+            int y = 500;
 
             //création du code secret en utilisant la liste des couleurs
             for (int i = 0; i < NB_COLORS; i++)
@@ -129,7 +135,7 @@ namespace P_MasterMind_Graphique
 
 
                 //Affichage code secret --> solution
-                /*lblCode.Location = new Point(x, y);
+                lblCode.Location = new Point(x, y);
 
                 x = x + 40;
 
@@ -143,7 +149,7 @@ namespace P_MasterMind_Graphique
                 lblCode.Size = new Size(LBL_SIZE, LBL_SIZE);
 
                 //association du label à la form
-                Controls.Add(lblCode);*/
+                Controls.Add(lblCode);
             }
 
 
@@ -222,14 +228,19 @@ namespace P_MasterMind_Graphique
                 //réinitialise l'axe X pour que le bouton soit tout à gauche du panel
                 panelTriesAxisX = 0;
 
+                
                 //Affiche les labels en ligne
                 for (int j = 0; j < NB_COLORS; j++)
                 {
-                    //Crée un label
+                    //Crée un label et une copie pour la comparaison
                     Label colorLabels = new Label();
+                    Label copyColorLabels = new Label();
 
                     //Ajoute le label au tableau
                     gridLabels[j, i] = colorLabels;
+
+                    //ajoute le label dans la copie du tableau
+                    copyGridLabels[j, i] = copyColorLabels;
 
                     //donne la couleur de fond blanche au label
                     colorLabels.BackColor = Color.White;
@@ -295,7 +306,7 @@ namespace P_MasterMind_Graphique
                     //Ajoute le label au tableau
                     gridResultLabels[j, i] = resultLabels;
 
-                    //donne la couleur de fond grises au label
+                    //donne la couleur de fond bleue au label
                     resultLabels.BackColor = Color.PowderBlue;
 
                     //Donne une bordure au label
@@ -386,6 +397,8 @@ namespace P_MasterMind_Graphique
         /// <param name="e"></param>
         private void colors_Click(object sender, EventArgs e)
         {
+            //Réinitialise le compte de label de résultat, si il est a 4 donc que la ligne est pleine
+            //retourne à 0 pour commencer dans la prochaine ligne à la première case
             if (toColorLabel == NB_COLORS)
             {
                 toColorLabel = 0;
@@ -423,8 +436,15 @@ namespace P_MasterMind_Graphique
                 // obtient le label correspondant dans la grille des essais (gridLabels)
                 Label selectedLabel = gridLabels[toColorLabel, countRow];
 
+                //obtient le label correspondant dans la grille des essais de la copie(copyGridLabels)
+                Label copySelectedLabel = copyGridLabels[toColorLabel, countRow];
+
                 // remplit le label d'essai avec la couleur du bouton
                 selectedLabel.BackColor = selectedColor;
+
+                //remplit le label d'essai de la copie avec la couleur du bouton
+                copySelectedLabel.BackColor = selectedColor;
+
                 //incrémente le compteur pour la prochaine case d'essai
                 toColorLabel++;
 
@@ -432,17 +452,6 @@ namespace P_MasterMind_Graphique
             
 
 
-        }
-
-        /// <summary>
-        /// Quitte l'application
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnExitGame_Click(object sender, EventArgs e)
-        {
-            //Quitte l'application
-            Application.Exit();
         }
 
 
@@ -468,6 +477,9 @@ namespace P_MasterMind_Graphique
             //Réinitialise le compteur de bonne couleurs au bon endroit
             GoodColorPlace = 0;
 
+            //Réinitialise l'index de la case à remplir pour le résultat
+            cptrResult = 0;
+
             //Parcour le tableau et compare les essais du joueur et le code secret
             for(int j = 0; j < NB_COLORS; j++)
             {
@@ -476,16 +488,20 @@ namespace P_MasterMind_Graphique
                 {
 
                     //Affiche la couleur blanche dans la case dont le joueur à trouvé la couleur
-                    gridResultLabels[j, countRow].BackColor = Color.White;
+                    gridResultLabels[cptrResult, countRow].BackColor = Color.White;
                     GoodColorPlace++;
+                    cptrResult++;
 
                     //change la couleur de la copie de la liste
                     copySecretCode[j] = Color.DarkViolet;
 
+                    //change la couleur de la copie de la liste
+                    copyGridLabels[j,countRow].BackColor = Color.Turquoise;
+
                     /*********************************************************Message de Victoire********************************************/
 
                     //envoie un message de victoire si les 4 couleurs sont trouvées
-                    if (GoodColorPlace == 4)
+                    if (GoodColorPlace == NB_COLORS && countRow < MAX_TRIES)
                     {
                         //cache cette form
                         this.Hide();
@@ -572,6 +588,7 @@ namespace P_MasterMind_Graphique
                 }
             }
 
+            
 
             //parcours le tableau
             for (int i = 0; i < NB_COLORS; i++)
@@ -579,10 +596,11 @@ namespace P_MasterMind_Graphique
                 for(int j = 0;j < NB_COLORS; j++)
                 {
                     //si la couleur existe dans la copie du code
-                    if (gridLabels[i, countRow].BackColor == copySecretCode[j] && i != j && gridResultLabels[i, countRow].BackColor != Color.White)
+                    if (copyGridLabels[i, countRow].BackColor == copySecretCode[j] && i != j)
                     {
                         //change la couleurs des labels de résultats
-                        gridResultLabels[i, countRow].BackColor = Color.Black;
+                        gridResultLabels[cptrResult, countRow].BackColor = Color.Black;
+                        cptrResult++;
                         break;
                     }
                 }
@@ -591,10 +609,10 @@ namespace P_MasterMind_Graphique
             //Ajoute 1 pour passer à la ligne suivante et compter les essais
             countRow++;
 
-            /*********************************************************Message de défaite********************************************/
+            /**************************************************Message de défaite********************************************/
 
             //Si le joueur à atteint le nombre max d'essai
-            if (countRow == MAX_TRIES)
+            if (countRow == MAX_TRIES && GoodColorPlace < NB_COLORS)
             {
                 //Affiche un message de défaite
                 this.Hide();
@@ -700,5 +718,18 @@ namespace P_MasterMind_Graphique
             }
         }
 
+
+
+
+        /// <summary>
+        /// Quitte l'application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnExitGame_Click(object sender, EventArgs e)
+        {
+            //Quitte l'application
+            Application.Exit();
+        }
     }
 }
