@@ -32,7 +32,7 @@
             this.lblresultUserTry = new System.Windows.Forms.Label();
             this.lblPossibleColors = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnQuitGame = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
             this.lblBlackCase = new System.Windows.Forms.Label();
             this.lblWhiteCase = new System.Windows.Forms.Label();
@@ -83,17 +83,17 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button2
+            // btnQuitGame
             // 
-            this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(273, 569);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 36);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Quitter";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btnExitGame_Click);
+            this.btnQuitGame.BackColor = System.Drawing.Color.Red;
+            this.btnQuitGame.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitGame.Location = new System.Drawing.Point(273, 569);
+            this.btnQuitGame.Name = "btnQuitGame";
+            this.btnQuitGame.Size = new System.Drawing.Size(99, 36);
+            this.btnQuitGame.TabIndex = 3;
+            this.btnQuitGame.Text = "Quitter";
+            this.btnQuitGame.UseVisualStyleBackColor = false;
+            this.btnQuitGame.Click += new System.EventHandler(this.btnExitGame_Click);
             // 
             // btnCheck
             // 
@@ -151,7 +151,7 @@
             this.Controls.Add(this.lblRappel);
             this.Controls.Add(this.lblBlackCase);
             this.Controls.Add(this.btnCheck);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnQuitGame);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblPossibleColors);
             this.Controls.Add(this.lblresultUserTry);
@@ -170,7 +170,7 @@
         private System.Windows.Forms.Label lblresultUserTry;
         private System.Windows.Forms.Label lblPossibleColors;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnQuitGame;
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.Label lblBlackCase;
         private System.Windows.Forms.Label lblWhiteCase;

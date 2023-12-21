@@ -400,11 +400,17 @@ namespace P_MasterMind_Graphique
                 MessageBox.Show("La ligne est pleine");
 
                 //désactive chaque boutons de couleurs
-                foreach (Button btn in btnColor )
+                foreach (Button btn in btnColor)
                 {
                     btn.Enabled = false;
+
                 }
 
+                //désactive le bouton "Effacer"
+                btnDelete.Enabled = false;
+
+                //désactive le bouton "Quitter"
+                btnQuitGame.Enabled = false;
             }
             else
             {
@@ -476,7 +482,7 @@ namespace P_MasterMind_Graphique
                     //change la couleur de la copie de la liste
                     copySecretCode[j] = Color.DarkViolet;
 
-
+                    /*********************************************************Message de Victoire********************************************/
 
                     //envoie un message de victoire si les 4 couleurs sont trouvées
                     if (GoodColorPlace == 4)
@@ -485,7 +491,10 @@ namespace P_MasterMind_Graphique
                         this.Hide();
 
                         //Change le nom de la form
-                        victoryDefeatForm.Name = "FrmVictory";
+                        victoryDefeatForm.Name = "frmVictoryDefeat";
+
+                        //Change le texte de la form
+                        victoryDefeatForm.Text = "VICTORY !!";
 
                         //initialise la taille de la form
                         victoryDefeatForm.Size = new Size(700,400);
@@ -494,7 +503,7 @@ namespace P_MasterMind_Graphique
                         victoryDefeatForm.BackColor = Color.BurlyWood;
 
                         //Change le nom du label
-                        victoryDefeatLabel.Name = "lblVictory";
+                        victoryDefeatLabel.Name = "lblVictoryDefeat";
 
                         //Défini la taille du label
                         victoryDefeatLabel.Size = new Size(500, 100);
@@ -506,13 +515,13 @@ namespace P_MasterMind_Graphique
                         victoryDefeatForm.Font = new Font("Stencil", 18, FontStyle.Regular);
 
                         //Affiche un message de victoire dans le texte du label
-                        victoryDefeatLabel.Text = "Bravo !! ;) Tu as trouvé le code secret !!";
+                        victoryDefeatLabel.Text = "Bravo !!\nTu as trouvé le code secret !!";
 
                         //Change la police du bouton Rejouer
                         btnReplay.Font = new Font("Tw Cen MT Condensed", 18, FontStyle.Bold);
 
                         //Change la couleur de fond du bouton Rejouer
-                        btnReplay.BackColor = Color.Red;
+                        btnReplay.BackColor = Color.Lime;
 
                         //Change le nom du bouton pour rejouer
                         btnReplay.Name = "btnReplay";
@@ -532,8 +541,8 @@ namespace P_MasterMind_Graphique
                         //Change la police du bouton Rejouer
                         btnQuit.Font = new Font("Tw Cen MT Condensed", 18, FontStyle.Bold);
 
-                        //Change la couleur de fond du bouton Rejouer
-                        btnQuit.BackColor = Color.Lime;
+                        //Change la couleur de fond du bouton Quitter
+                        btnQuit.BackColor = Color.Red;
 
                         //Change le nom du bouton pour quitter
                         btnQuit.Name = "btnQuit";
@@ -558,8 +567,6 @@ namespace P_MasterMind_Graphique
 
                         //Affiche la form
                         victoryDefeatForm.Show();
-
-
                     }
 
                 }
@@ -572,7 +579,7 @@ namespace P_MasterMind_Graphique
                 for(int j = 0;j < NB_COLORS; j++)
                 {
                     //si la couleur existe dans la copie du code
-                    if (gridLabels[i, countRow].BackColor == copySecretCode[j] && i != j && gridResultLabels[i, countRow].BackColor != Color.Green)
+                    if (gridLabels[i, countRow].BackColor == copySecretCode[j] && i != j && gridResultLabels[i, countRow].BackColor != Color.White)
                     {
                         //change la couleurs des labels de résultats
                         gridResultLabels[i, countRow].BackColor = Color.Black;
@@ -584,6 +591,8 @@ namespace P_MasterMind_Graphique
             //Ajoute 1 pour passer à la ligne suivante et compter les essais
             countRow++;
 
+            /*********************************************************Message de défaite********************************************/
+
             //Si le joueur à atteint le nombre max d'essai
             if (countRow == MAX_TRIES)
             {
@@ -592,9 +601,83 @@ namespace P_MasterMind_Graphique
 
                 //Affiche la form pour le message de défaite
                 victoryDefeatForm.Show();
-                
+
+                //Change le texte de la form
+                victoryDefeatForm.Text = "DEFEAT !!";
+
+                //initialise la taille de la form
+                victoryDefeatForm.Size = new Size(700, 400);
+
+                //Change la couleur du fond de la form
+                victoryDefeatForm.BackColor = Color.BurlyWood;
+
+                //Change le nom du label
+                victoryDefeatLabel.Name = "lblVictoryDefeat";
+
+                //Défini la taille du label
+                victoryDefeatLabel.Size = new Size(500, 100);
+
+                //Place le label dans la form
+                victoryDefeatLabel.Location = new Point(110, 100);
+
+                //Change la police du message et l'attribue a la form
+                victoryDefeatForm.Font = new Font("Stencil", 18, FontStyle.Regular);
+
                 //Change de le text en message de défaite
-               victoryDefeatLabel.Text = "Tu as perdu, tu feras mieux la prochaine fois";
+                victoryDefeatLabel.Text = "Malheureusement, tu as perdu :( \n" +
+                    "Retente ta chance !!";
+
+                //Change la police du bouton Rejouer
+                btnReplay.Font = new Font("Tw Cen MT Condensed", 18, FontStyle.Bold);
+
+                //Change la couleur de fond du bouton Rejouer
+                btnReplay.BackColor = Color.Lime;
+
+                //Change le nom du bouton pour rejouer
+                btnReplay.Name = "btnReplay";
+
+                //Change le texte du bouton
+                btnReplay.Text = "Rejouer";
+
+                //Change la taille du bouton
+                btnReplay.Size = new Size(138, 55);
+
+                //Place le bouton
+                btnReplay.Location = new Point(110, 250);
+
+                //Change la police du bouton Rejouer
+                btnQuit.Font = new Font("Tw Cen MT Condensed", 18, FontStyle.Bold);
+
+                //Change la couleur de fond du bouton Quitter
+                btnQuit.BackColor = Color.Red;
+
+                //Change le nom du bouton pour quitter
+                btnQuit.Name = "btnQuit";
+
+                //Change le texte du bouton
+                btnQuit.Text = "Quitter";
+
+                //Change la taille du bouton
+                btnQuit.Size = new Size(138, 55);
+
+                //Place le bouton
+                btnQuit.Location = new Point(400, 250);
+
+                //Associe la méthode pour quitter l'application au nouveau bouton quitter
+                btnQuit.Click += new EventHandler(btnExitGame_Click);
+
+                //Associe le bouton à la form
+                victoryDefeatForm.Controls.Add(btnReplay);
+
+                //Associe le bouton à la form
+                victoryDefeatForm.Controls.Add(btnQuit);
+
+                //Associe le label à la form
+                victoryDefeatForm.Controls.Add(victoryDefeatLabel);
+
+                //Affiche la form
+                victoryDefeatForm.Show();
+
 
             }
         }
@@ -616,5 +699,6 @@ namespace P_MasterMind_Graphique
                 toColorLabel = 0;
             }
         }
+
     }
 }
