@@ -616,6 +616,5 @@ namespace P_MasterMind_Graphique
                 toColorLabel = 0;
             }
         }
-
     }
 }

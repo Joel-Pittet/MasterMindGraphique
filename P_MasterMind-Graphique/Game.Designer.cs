@@ -34,6 +34,9 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
+            this.lblBlackCase = new System.Windows.Forms.Label();
+            this.lblWhiteCase = new System.Windows.Forms.Label();
+            this.lblRappel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTries
@@ -104,12 +107,49 @@
             this.btnCheck.UseVisualStyleBackColor = false;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
+            // lblBlackCase
+            // 
+            this.lblBlackCase.AutoSize = true;
+            this.lblBlackCase.BackColor = System.Drawing.Color.Black;
+            this.lblBlackCase.Font = new System.Drawing.Font("Tw Cen MT", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBlackCase.ForeColor = System.Drawing.Color.White;
+            this.lblBlackCase.Location = new System.Drawing.Point(37, 400);
+            this.lblBlackCase.Name = "lblBlackCase";
+            this.lblBlackCase.Size = new System.Drawing.Size(280, 17);
+            this.lblBlackCase.TabIndex = 4;
+            this.lblBlackCase.Text = "Case noire = couleur juste mais mauvais endroit";
+            // 
+            // lblWhiteCase
+            // 
+            this.lblWhiteCase.AutoSize = true;
+            this.lblWhiteCase.BackColor = System.Drawing.Color.White;
+            this.lblWhiteCase.Font = new System.Drawing.Font("Tw Cen MT", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWhiteCase.ForeColor = System.Drawing.Color.Black;
+            this.lblWhiteCase.Location = new System.Drawing.Point(37, 422);
+            this.lblWhiteCase.Name = "lblWhiteCase";
+            this.lblWhiteCase.Size = new System.Drawing.Size(254, 17);
+            this.lblWhiteCase.TabIndex = 4;
+            this.lblWhiteCase.Text = "Case blanche = couleur juste et bon endroit";
+            // 
+            // lblRappel
+            // 
+            this.lblRappel.AutoSize = true;
+            this.lblRappel.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRappel.Location = new System.Drawing.Point(37, 369);
+            this.lblRappel.Name = "lblRappel";
+            this.lblRappel.Size = new System.Drawing.Size(205, 20);
+            this.lblRappel.TabIndex = 4;
+            this.lblRappel.Text = "Rappel des couleurs de résultats";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BurlyWood;
             this.ClientSize = new System.Drawing.Size(399, 640);
+            this.Controls.Add(this.lblWhiteCase);
+            this.Controls.Add(this.lblRappel);
+            this.Controls.Add(this.lblBlackCase);
             this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnDelete);
@@ -132,5 +172,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCheck;
+        private System.Windows.Forms.Label lblBlackCase;
+        private System.Windows.Forms.Label lblWhiteCase;
+        private System.Windows.Forms.Label lblRappel;
     }
 }
