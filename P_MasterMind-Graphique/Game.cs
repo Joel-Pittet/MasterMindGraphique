@@ -711,7 +711,7 @@ namespace P_MasterMind_Graphique
             for (int i = 0; i < NB_COLORS; i++)
             {
                 //Remet la couleur blanche pour chaque label de la ligne d'essai actuelle
-                gridLabels[i,countRow].BackColor = Color.White;
+                gridLabels[i, countRow].BackColor = Color.White;
 
                 //réinitialise la variable qui aide a placer les couleurs à la suite
                 toColorLabel = 0;

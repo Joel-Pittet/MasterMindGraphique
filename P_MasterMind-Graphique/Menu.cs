@@ -29,7 +29,6 @@ namespace P_MasterMind_Graphique
             this.Hide();
         }
 
-
         /// <summary>
         /// Quitte le programme
         /// </summary>

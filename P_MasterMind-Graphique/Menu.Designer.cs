@@ -38,7 +38,7 @@
             this.btnPlay.BackColor = System.Drawing.Color.Lime;
             this.btnPlay.Font = new System.Drawing.Font("Tw Cen MT Condensed", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnPlay.Location = new System.Drawing.Point(135, 267);
+            this.btnPlay.Location = new System.Drawing.Point(135, 278);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(138, 55);
             this.btnPlay.TabIndex = 0;
