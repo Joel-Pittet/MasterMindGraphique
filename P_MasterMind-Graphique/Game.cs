@@ -35,7 +35,7 @@ namespace P_MasterMind_Graphique
         Button[] btnColor = new Button[7];
 
         //maximum de couleurs dans le code secret et dans les essais
-        const int NB_COLORS = 4;
+        const int NB_COLORS = 6;
 
         //nombre maximum d'essais
         const int MAX_TRIES = 10;
@@ -129,20 +129,16 @@ namespace P_MasterMind_Graphique
             int x = 100;
             int y = 500;
 
-            //Random pour le code secret
-            Random RandomCode = new Random();
+           
+            // création d'une liste de code de couleur secret
+            secretCode = GetSecretCode(NB_COLORS, ColorList);
+            copySecretCode = secretCode;
+
 
             //création du code secret en utilisant la liste des couleurs
             for (int i = 0; i < NB_COLORS; i++)
             {
-                //choisi une couleur aléatoirement dans la liste de couleur
-                RandomColor = RandomCode.Next(ColorList.Count);
-
-                //Ajoute les couleurs à la liste du code secret
-                secretCode.Add(ColorList[RandomColor]);
-
-                //Ajoute les couleurs dans la copie de la liste du code secret
-                copySecretCode.Add(ColorList[RandomColor]);
+               
 
                 //Affichage du code via des labels de couleurs
                 lblCode = new Label();
@@ -154,7 +150,7 @@ namespace P_MasterMind_Graphique
 
                 x = x + 40;
 
-                lblCode.BackColor = ColorList[RandomColor];
+                lblCode.BackColor = secretCode[i];
 
 
                 //Donne une bordure au label
@@ -193,10 +189,11 @@ namespace P_MasterMind_Graphique
 
             /***********************************Panel des labels de résultats***************************************/
 
-            
+
+            int posPanelResult = pnlTries.Width + 30;
 
             //Placement du panel dans la Form
-            pnlResults.Location = new Point(panelTriesAxisX + 130, panelTriesAxisY);
+            pnlResults.Location = new Point(panelTriesAxisX + posPanelResult, panelTriesAxisY);
 
             //Initialisation de la hauteur du panel
             pnlResults.Height = MAX_TRIES * LBL_SIZE;
@@ -403,7 +400,26 @@ namespace P_MasterMind_Graphique
 
 
 
+        private List<Color> GetSecretCode(int nbColor, List<Color> colorList)
+        {
+            //Random pour le code secret
+            Random RandomCode = new Random();
 
+            List<Color> secrCode = new List<Color>();
+
+            //création du code secret en utilisant la liste des couleurs
+            for (int i = 0; i < nbColor; i++)
+            {
+                //choisi une couleur aléatoirement dans la liste de couleur
+                RandomColor = RandomCode.Next(ColorList.Count);
+
+                //Ajoute les couleurs à la liste du code secret
+                secrCode.Add(ColorList[RandomColor]);
+            }
+
+            return secrCode;    
+
+        }
 
         /// <summary>
         /// Lance la form en initialisant les panels d'essais et de couleurs
