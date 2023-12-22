@@ -40,6 +40,15 @@ namespace P_MasterMind_Graphique
         //nombre maximum d'essais
         const int MAX_TRIES = 10;
 
+        //Création du panel pour la zone des couleurs
+        Panel pnlColors = new Panel();
+
+        //Création du panel pour la zone d'essais
+        Panel pnlResults = new Panel();
+
+        //Création du panel pour la zone d'essais
+        Panel pnlTries = new Panel();
+
         //tableau pour stocker les labels (essais du joueur)
         Label[,] gridLabels = new Label[NB_COLORS, MAX_TRIES];
 
@@ -48,6 +57,12 @@ namespace P_MasterMind_Graphique
 
         //tableau pour stocker les labels (resultats des essais du joueur)
         Label[,] gridResultLabels = new Label[NB_COLORS, MAX_TRIES];
+
+        //
+        Label lblCode = new Label();
+
+        //
+        int RandomColor;
 
         //compteur pour les labels de résultats
         int lblResultCount = 0;
@@ -85,13 +100,12 @@ namespace P_MasterMind_Graphique
         //pour changer de ligne pour les essais
         int countRow = 0;
 
-        //Random pour le code secret
-        Random RandomCode = new Random();
+        
 
         //pour compter le nombre de couleurs juste au bon endroit
         int GoodColorPlace = 0;
 
-        //crée une form de victoire
+        //crée une form de victoire et de défaite
         Form victoryDefeatForm = new Form();
 
         //Création du bouton pour quitter sur la form de victoire/Défaite
@@ -105,23 +119,24 @@ namespace P_MasterMind_Graphique
 
         //pour remplir les cases de résutlat de gauche à droite
         int cptrResult = 0;
-
-        /// <summary>
-        /// Lance la form en initialisant les panels d'essais et de couleurs
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Game_Load(object sender, EventArgs e)
+       
+       /// <summary>
+       /// 
+       /// </summary>
+        public void PlayGame()
         {
             //Place les labels de solution
             int x = 100;
             int y = 500;
 
+            //Random pour le code secret
+            Random RandomCode = new Random();
+
             //création du code secret en utilisant la liste des couleurs
             for (int i = 0; i < NB_COLORS; i++)
             {
                 //choisi une couleur aléatoirement dans la liste de couleur
-                int RandomColor = RandomCode.Next(ColorList.Count);
+                RandomColor = RandomCode.Next(ColorList.Count);
 
                 //Ajoute les couleurs à la liste du code secret
                 secretCode.Add(ColorList[RandomColor]);
@@ -130,7 +145,7 @@ namespace P_MasterMind_Graphique
                 copySecretCode.Add(ColorList[RandomColor]);
 
                 //Affichage du code via des labels de couleurs
-                Label lblCode = new Label();
+                lblCode = new Label();
 
 
 
@@ -152,14 +167,13 @@ namespace P_MasterMind_Graphique
                 Controls.Add(lblCode);
             }
 
-
+           
 
 
 
             /***********************************Panel des labels d'essais***************************************/
 
-            //Création du panel pour la zone d'essais
-            Panel pnlTries = new Panel();
+           
 
             //Placement du panel dans la Form
             pnlTries.Location = new Point(panelTriesAxisX, panelTriesAxisY);
@@ -179,8 +193,7 @@ namespace P_MasterMind_Graphique
 
             /***********************************Panel des labels de résultats***************************************/
 
-            //Création du panel pour la zone d'essais
-            Panel pnlResults = new Panel();
+            
 
             //Placement du panel dans la Form
             pnlResults.Location = new Point(panelTriesAxisX + 130, panelTriesAxisY);
@@ -200,8 +213,7 @@ namespace P_MasterMind_Graphique
 
             /***************************************Panel pour zone de couleurs*********************************/
 
-            //Création du panel pour la zone des couleurs
-            Panel pnlColors = new Panel();
+            
 
             //Placement du panel de la zone des couleurs dans la Form
             pnlColors.Location = new Point(panelColorsAxisX - 100, panelColorsAxisY + 30);
@@ -228,7 +240,7 @@ namespace P_MasterMind_Graphique
                 //réinitialise l'axe X pour que le bouton soit tout à gauche du panel
                 panelTriesAxisX = 0;
 
-                
+
                 //Affiche les labels en ligne
                 for (int j = 0; j < NB_COLORS; j++)
                 {
@@ -356,7 +368,7 @@ namespace P_MasterMind_Graphique
             {
 
                 //Crée un bouton pour chaque couleur
-                btnColor[i]  = new Button();
+                btnColor[i] = new Button();
 
                 //Affiche la couleur dans le boutons
                 btnColor[i].BackColor = ColorList[i];
@@ -387,6 +399,20 @@ namespace P_MasterMind_Graphique
 
 
             }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Lance la form en initialisant les panels d'essais et de couleurs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Game_Load(object sender, EventArgs e)
+        {
+            PlayGame();
         }
 
 
@@ -449,14 +475,14 @@ namespace P_MasterMind_Graphique
                 toColorLabel++;
 
             }
-            
-
 
         }
 
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
+            btnDelete.Enabled = true;
+            btnQuitGame.Enabled = true;
 
             //Remet à 0 l'index pour mettre la couleur dans le bon label
             toColorLabel = 0;
@@ -575,6 +601,9 @@ namespace P_MasterMind_Graphique
                         //Associe la méthode pour quitter l'application au nouveau bouton quitter
                         btnQuit.Click += new EventHandler(btnExitGame_Click);
 
+                        //Associe la méthode pour rejouer
+                        btnReplay.Click += new EventHandler(btnReplay_Click);
+
                         //Associe le bouton à la form
                         victoryDefeatForm.Controls.Add(btnQuit);
 
@@ -684,6 +713,9 @@ namespace P_MasterMind_Graphique
                 //Associe la méthode pour quitter l'application au nouveau bouton quitter
                 btnQuit.Click += new EventHandler(btnExitGame_Click);
 
+                //Associe la méthode pour rejouer
+                btnReplay.Click += new EventHandler(btnReplay_Click);
+
                 //Associe le bouton à la form
                 victoryDefeatForm.Controls.Add(btnReplay);
 
@@ -719,6 +751,38 @@ namespace P_MasterMind_Graphique
         }
 
 
+        private void btnReplay_Click(object sender, EventArgs e)
+        {
+            //Affiche la form de jeu "PlayGame"
+            this.Show();
+
+            //Cache la form avec le message de fin
+            victoryDefeatForm.Hide();
+
+            //Vide les panels utilisé dans la partie précédente
+            pnlColors.Controls.Clear();
+            pnlResults.Controls.Clear();
+            pnlTries.Controls.Clear();
+
+            // Pour placement du panel de la zone d'essais
+             
+            panelTriesAxisX = 12;
+            panelTriesAxisY = 36;
+
+            //Pour placement du panel de la zone des couleurs
+            panelColorsAxisX = 130;
+            panelColorsAxisY = 300;
+
+            //Remet les essais et la ligne actuelle a 0
+            countRow = 0;
+
+            //Vide la liste du code secret et sa copie
+            secretCode.Clear();
+            copySecretCode.Clear();
+
+            //Lance une nouvelle partie
+            PlayGame();
+        }
 
 
         /// <summary>
