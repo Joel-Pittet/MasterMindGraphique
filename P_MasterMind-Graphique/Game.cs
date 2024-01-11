@@ -28,14 +28,14 @@ namespace P_MasterMind_Graphique
         //Copie de la liste du code
         List<Color> copySecretCode = new List<Color>();
 
-        //constante pour nombre de couleurs disponibles
-        //const int COLORS_IN_GAME = ColorList.Count;
+        //Nombre de couleurs disponible dans la liste
+        const int NB_COLORS_IN_THE_LIST = 7;
 
         //Tableau pour gérer les boutons de la zone des couleurs
-        Button[] btnColor = new Button[7];
+        Button[] btnColor = new Button[NB_COLORS_IN_THE_LIST];
 
         //maximum de couleurs dans le code secret et dans les essais
-        const int NB_COLORS = 6;
+        const int NB_COLORS = 4;
 
         //nombre maximum d'essais
         const int MAX_TRIES = 10;
@@ -58,10 +58,7 @@ namespace P_MasterMind_Graphique
         //tableau pour stocker les labels (resultats des essais du joueur)
         Label[,] gridResultLabels = new Label[NB_COLORS, MAX_TRIES];
 
-        //
-        Label lblCode = new Label();
-
-        //
+        //Stocke la couleur aléatoire du code secret
         int RandomColor;
 
         //compteur pour les labels de résultats
@@ -100,8 +97,6 @@ namespace P_MasterMind_Graphique
         //pour changer de ligne pour les essais
         int countRow = 0;
 
-        
-
         //pour compter le nombre de couleurs juste au bon endroit
         int GoodColorPlace = 0;
 
@@ -121,50 +116,14 @@ namespace P_MasterMind_Graphique
         int cptrResult = 0;
        
        /// <summary>
-       /// 
+       /// Initialise le plateau de jeu
        /// </summary>
         public void PlayGame()
         {
-            //Place les labels de solution
-            int x = 100;
-            int y = 500;
-
            
             // création d'une liste de code de couleur secret
             secretCode = GetSecretCode(NB_COLORS, ColorList);
             copySecretCode = secretCode;
-
-
-            //création du code secret en utilisant la liste des couleurs
-            for (int i = 0; i < NB_COLORS; i++)
-            {
-               
-
-                //Affichage du code via des labels de couleurs
-                lblCode = new Label();
-
-
-
-                //Affichage code secret --> solution
-                lblCode.Location = new Point(x, y);
-
-                x = x + 40;
-
-                lblCode.BackColor = secretCode[i];
-
-
-                //Donne une bordure au label
-                lblCode.BorderStyle = BorderStyle.FixedSingle;
-
-                //Change la taille du label
-                lblCode.Size = new Size(LBL_SIZE, LBL_SIZE);
-
-                //association du label à la form
-                Controls.Add(lblCode);
-            }
-
-           
-
 
 
             /***********************************Panel des labels d'essais***************************************/
